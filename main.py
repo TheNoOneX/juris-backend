@@ -227,11 +227,20 @@ def extract_json(text: str) -> dict:
 # 8. TEXT EXTRACTION
 # ======================================================
 
+
+
 def extract_text_from_image(image: Image.Image) -> str:
+    """
+    OCR using Tesseract.
+    On platforms without Tesseract (like Render free tier),
+    this safely fails and triggers Vision fallback.
+    """
     try:
         return pytesseract.image_to_string(image)
-    except:
+    except Exception as e:
+        print("⚠️ OCR unavailable:", e)
         return ""
+
 
 def extract_text_from_pdf(file_bytes: bytes) -> str:
     text = ""
@@ -312,3 +321,4 @@ async def analyze_image(
     prompt = build_prompt(text, doc_type, language, verbosity)
     response = client.models.generate_content(model=MODEL_NAME, contents=prompt)
     return extract_json(response.text)
+
