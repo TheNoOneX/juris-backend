@@ -8,3 +8,5 @@ pdfplumber
 python-docx
 google-genai
 pillow
+python-multipart
+
