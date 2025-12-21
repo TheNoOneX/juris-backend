@@ -1,11 +1,15 @@
 fastapi
 uvicorn
 python-dotenv
-pytesseract
-pdfplumber
-python-docx
 google-genai
+python-multipart
+
+# Document & OCR support
 pillow
+python-docx
+pdfplumber
+pytesseract
+
 
 
 
