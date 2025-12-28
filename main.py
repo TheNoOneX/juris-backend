@@ -43,10 +43,10 @@ if not API_KEY:
 
 print("🔌 Connecting to Gemini...")
 client = genai.Client(api_key=API_KEY)
-MODEL_NAME = "gemini-3-flash-preview"
+MODEL_NAME = "gemini-2.5-flash"
 print("✅ Gemini connected")
 
-app = FastAPI(title="NyayaConnect Backend", version="5.0")
+app = FastAPI(title="JURIS-AI Backend", version="5.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -373,4 +373,5 @@ async def analyze_image(
     prompt = build_prompt(text, doc_type, language, verbosity)
     response = call_gemini(prompt)
     return enforce_schema(extract_json(response.text))
+
 
